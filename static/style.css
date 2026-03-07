@@ -227,16 +227,14 @@ h1 {
 
 .copy-popup {
     position: absolute;
-    background-color: #002dc1;
-    color: rgb(255, 255, 255);
+    background-color: #002dc100;
+    color: rgb(0, 0, 0);
     padding: 5px 12px;
     border-radius: 4px;
     font-size: 14px;
     font-family: "Bellota Text", sans-serif;
     pointer-events: none; 
-    z-index: 1000;
-    
-
+    z-index: 4000;
     animation: floatUpFade 1.2s ease-out forwards;
 }
 
@@ -253,4 +251,145 @@ h1 {
         opacity: 0;
         transform: translateY(-30px);
     }
+}
+
+.history {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 650px;
+    height: 100vh;
+    background-color: #D9D9D9;
+    border-left: 18px solid #FF2323;
+    z-index: 1000;
+    transform: translateX(100%);
+    transition: transform 0.4s ease, border-left-color 0.4s ease;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.history:has(.historyButton:hover) {
+    border-left-color: rgb(171, 49, 49);
+}
+
+.history.open {
+    transform: translateX(0);
+}
+
+.historyButton {
+    position: absolute;
+    left: -75px; 
+    top: 45%;
+    width: 70px;
+    height: 60px;
+    background-color: #FF2323;
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 20px 0 0 20px;
+    font-size: 2.7rem;
+    transition: background-color 0.4s ease, color 0.5s ease;
+}
+
+.historyButton i {
+  left: 10px;
+}
+
+.historyButton:hover {
+    background-color: rgb(171, 49, 49);
+}
+
+.pair {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.request {
+  background-color: #FF2323;
+  border-radius: 20px 20px 0 0;
+  position: relative;
+  width: 610px;
+  height: 170px;
+  box-sizing: border-box; 
+  margin-bottom: 0;
+}
+
+.response {
+  margin-top: 0;
+  background-color: #fef7ff;
+  border-radius: 0 0 20px 20px;
+  position: relative;
+  width: 610px;
+  height: 170px;
+  box-sizing: border-box; 
+}
+
+.misc {
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;            
+  width: 610px;                   
+  padding-top: 8px;              
+  box-sizing: border-box;
+}
+
+.misc p {
+    margin: 0;  
+}
+
+.misc span {
+  transition: color 0.4s ease, color 0.5s ease;
+  cursor: pointer;  
+}
+
+.misc p::selection {
+  background-color: #D9D9D9; 
+  color: #000000;          
+}
+
+.misc span::selection {
+  background-color: #D9D9D9; 
+  color: #000000;          
+}
+
+.history::-webkit-scrollbar,
+.historyBar::-webkit-scrollbar {
+    display: none !important;
+}
+
+.stats p::selection {
+  background-color: #D9D9D9; 
+  color: #000000;          
+}
+
+.misc span:hover {
+    color: #FF2323;
+}
+
+.historyBar p {
+  margin: 5px;
+}
+
+.historyBar .bellota-text-bold {
+  font-size: 2.7em;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  text-align: center;
+}
+
+.historyBar {
+    padding: 0 0 0 20px;
+    height: 100%;
+    overflow-y: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    position: relative;
 }
