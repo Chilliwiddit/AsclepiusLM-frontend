@@ -317,6 +317,8 @@ h1 {
   height: 170px;
   box-sizing: border-box; 
   margin-bottom: 0;
+  padding: 5px; 
+  overflow-y: auto;
 }
 
 .response {
@@ -327,6 +329,8 @@ h1 {
   width: 610px;
   height: 170px;
   box-sizing: border-box; 
+  padding: 5px;
+  overflow-y: auto;
 }
 
 .misc {
@@ -358,7 +362,9 @@ h1 {
 }
 
 .history::-webkit-scrollbar,
-.historyBar::-webkit-scrollbar {
+.historyBar::-webkit-scrollbar,
+.request::-webkit-scrollbar,
+.response::-webkit-scrollbar {
     display: none !important;
 }
 
