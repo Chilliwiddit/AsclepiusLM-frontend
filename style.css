@@ -351,6 +351,12 @@ h1 {
   cursor: pointer;  
 }
 
+.request::selection,
+.response::selection {
+  background-color: #D9D9D9; 
+  color: #000000;          
+}
+
 .misc p::selection {
   background-color: #D9D9D9; 
   color: #000000;          
