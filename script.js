@@ -97,7 +97,7 @@ input.addEventListener('keydown', async function(e) {
             let requestData = {
                 inputs: finalPrompt,
                 parameters: {
-                    max_new_tokens: 128,
+                    max_new_tokens: 512,
                     temperature: 0.7
                 }
             };
