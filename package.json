@@ -1,0 +1,25 @@
+{
+  "name": "asclepiuslm-frontend",
+  "version": "1.0.0",
+  "description": "This is the frontend implementation for AsclepiusLM, which infers a Causal SLM trained with a weighted loss function to achieve higher accuracy with medical text summarization",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Chilliwiddit/AsclepiusLM-frontend.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Chilliwiddit/AsclepiusLM-frontend/issues"
+  },
+  "homepage": "https://github.com/Chilliwiddit/AsclepiusLM-frontend#readme",
+  "devDependencies": {
+    "cypress": "^15.12.0",
+    "http-server": "^14.1.1"
+  }
+}
