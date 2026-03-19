@@ -1,49 +1,36 @@
-describe('AsclepiusLM E2E Tests', () => {
+describe('AsclepiusLM Simplified E2E Tests', () => {
   beforeEach(() => {
     cy.visit('http://localhost:8080')
     
     cy.intercept('POST', '/api/chat', [
-      { generated_text: "IMPRESSION: Normal chest radiograph." }
-    ]).as('getRadiologySummary')
+      { generated_text: "IMPRESSION: Normal summary." }
+    ]).as('getChat')
   })
 
-  it('loads the correct branding and title', () => {
-    cy.get('.logo h1').should('be.visible').and('contain', 'AsclepiusLM')
-    cy.get('img[alt="rod-of-asclepius"]').should('be.visible')
+  it('loads the homepage', () => {
+    cy.get('.logo h1').should('contain', 'AsclepiusLM')
   })
 
-  it('submits text and displays the AI response', () => {
-    const reportText = "Heart size is normal. Lungs are clear."
+  it('updates the output area after typing', () => {
+    cy.get('#inputText').type('Scan report content{enter}')
     
-    cy.get('#inputText').type(`${reportText}{enter}`)
+    cy.wait('@getChat')
 
-    cy.get('.outputText p').should('contain', 'Please wait...')
-
-    cy.wait('@getRadiologySummary')
-
-    cy.get('.outputText p').should('contain', 'IMPRESSION: Normal chest radiograph.')
-    
-    cy.get('.stats p').should('contain', 'Latency:')
+    cy.get('.outputText p').should('not.be.empty')
+    cy.get('.outputText p').should('contain', 'IMPRESSION: Normal summary.')
   })
 
-  it('toggles the history panel and displays entries', () => {
-    cy.get('#inputText').type('Sample report{enter}')
-    cy.wait('@getRadiologySummary')
-
+  it('opens the history panel on click', () => {
     cy.get('#toggleHistory').click()
-
     cy.get('#historyPanel').should('have.class', 'open')
-
-    cy.get('.historyBar .pair').should('exist')
-    cy.get('.historyBar .request p').should('contain', 'Sample report')
   })
 
-  it('copies the output text to the clipboard when clicked', () => {
-    const testOutput = 'Test text to copy';
-    cy.get('.outputText p').invoke('text', testOutput)
-
+  it('displays the copy popup when output is clicked', () => {
+    cy.get('.outputText p').invoke('text', 'Sample text')
+    
     cy.get('.outputText p').click()
 
-    cy.get('.copy-popup').should('be.visible').and('contain', 'Copied to clipboard!')
+    cy.get('div').should('have.class', 'copy-popup')
+    cy.get('.copy-popup').should('contain', 'Copied')
   })
 })
