@@ -89,7 +89,7 @@ input.addEventListener('keydown', async function(e) {
         if (text !== "") {
 
             text = text.replace(/\n/g, ' ').replace(/\r/g, '');
-            input.value = "";
+            #input.value = "";
             latencyText.innerText = "";
         
             let finalPrompt = prompt.replace("{}", text);
